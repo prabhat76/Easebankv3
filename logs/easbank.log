@@ -1,0 +1,42 @@
+2026-01-29 22:37:10 [restartedMain] INFO  c.banking.easbank.EasbankApplication - Starting EasbankApplication using Java 21.0.9 with PID 13903 (/Users/prabhatkumar/Documents/easbank/target/classes started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-01-29 22:37:10 [restartedMain] INFO  c.banking.easbank.EasbankApplication - No active profile set, falling back to 1 default profile: "default"
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.banking.easbank.repository.LoginHistoryRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.banking.easbank.repository.TransactionsRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.banking.easbank.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 0 JDBC repository interfaces.
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1 ms. Found 3 JPA repository interfaces.
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-01-29 22:37:10 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-29 22:37:10 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 111 ms
+2026-01-29 22:37:10 [restartedMain] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-29 22:37:10 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-29 22:37:10 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariCP - Starting...
+2026-01-29 22:37:15 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariCP - Added connection org.postgresql.jdbc.PgConnection@324ae62c
+2026-01-29 22:37:15 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariCP - Start completed.
+2026-01-29 22:37:16 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-29 22:37:17 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://ep-plain-sea-aho213lb-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 17.7
+	Default catalog/schema: neondb/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-29 22:37:17 [restartedMain] INFO  org.hibernate.orm.core - HHH000182: No default (no-argument) constructor for class [com.banking.easbank.entity.Transactions] (class must be instantiated by Interceptor)
+2026-01-29 22:37:17 [restartedMain] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-29 22:37:21 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-29 22:37:21 [restartedMain] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-29 22:37:21 [restartedMain] INFO  o.s.b.w.a.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-01-29 22:37:21 [restartedMain] INFO  o.s.v.b.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-01-29 22:37:21 [restartedMain] INFO  o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-01-29 22:37:21 [restartedMain] INFO  c.banking.easbank.EasbankApplication - Started EasbankApplication in 11.799 seconds (process running for 21457.02)
+2026-01-29 22:37:21 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
