@@ -1,5 +1,6 @@
 package com.banking.easbank.controller;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -36,6 +37,7 @@ public class AuthController {
             response.put("userId", user.get().getId());
             response.put("email", user.get().getEmail());
             response.put("firstName", user.get().getFirstName());
+            response.put("logintime", LocalDateTime.now());
             return ResponseEntity.ok(response);
         } else {
             Map<String, Object> response = new HashMap<>();
