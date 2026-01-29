@@ -6,13 +6,13 @@ import java.util.Map;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.banking.easbank.exception.UserAlreadyExistsException;
 import com.banking.easbank.exception.UserNotFoundException;
 
-@ControllerAdvice
+//@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)

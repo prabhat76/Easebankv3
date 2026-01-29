@@ -2,9 +2,7 @@ package com.banking.easbank.service;
 
 import com.banking.easbank.entity.User;
 import com.banking.easbank.repository.UserRepository;
-
-import jakarta.transaction.Transactional;
-
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,4 +31,10 @@ public class UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+    @Transactional(readOnly = true)
+public Optional<User> findByEmail(String email) {
+    return userRepository.findByEmail(email);
+}
+
 }
