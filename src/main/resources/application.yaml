@@ -1,0 +1,51 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: easbank
+  datasource:
+    # Neon PostgreSQL Configuration
+    url: jdbc:postgresql://ep-plain-sea-aho213lb-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require
+    username: neondb_owner
+    password: npg_ijQmU0hyE9ap
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5 
+      idle-timeout: 30000
+      pool-name: HikariCP
+      max-lifetime: 2000000
+      connection-timeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+  enabled: false
+    # user:
+    #   name: admin
+    #   password: admin123
+  thymeleaf:
+    cache: false
+
+# OpenAPI/Swagger Configuration
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    operationsSorter: method
+    tagsSorter: alpha
+
+# Logging
+logging:
+  level:
+    org.springdoc: DEBUG
+    com.banking.easbank: DEBUG
+    
