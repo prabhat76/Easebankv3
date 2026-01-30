@@ -1,11 +1,8 @@
 package com.banking.easbank.entity;
 
-import jakarta.persistence.GeneratedValue;
-
 import java.math.BigDecimal;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "accounts")
@@ -18,7 +15,14 @@ public class Account {
     private String accountNumber;
     private String accountType;
     private BigDecimal balance;
+  
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+    
     public Account() {
     }
 
