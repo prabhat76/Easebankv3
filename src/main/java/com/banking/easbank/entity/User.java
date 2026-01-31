@@ -3,6 +3,9 @@ package com.banking.easbank.entity;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -11,11 +14,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
+    @NotNull
+    @Email
     private String email;
+    @NotNull
+    @Size(min = 1, max = 50)
     private String firstName;
     private String lastName;
+    @NotNull
     private String phone;
+    @NotNull
+    @Size(min = 6, max=12)
     private String password;
     private LocalDateTime createdAt;
     

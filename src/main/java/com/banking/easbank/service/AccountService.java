@@ -57,6 +57,9 @@ public class AccountService {
         return "ACC" + System.currentTimeMillis()+new Random().nextInt(); 
     }
 
+    public Optional<Account> getAccountById(Long id) {
+        return accountRepository.findById(id);
+    }
 
 
     

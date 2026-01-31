@@ -1,5 +1,4 @@
 package com.banking.easbank.controller;
-import java.util.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -28,13 +27,30 @@ public class AccountController {
     @Operation(summary = "Get account details", description = "Retrieve account information by account ID")
     public ResponseEntity<Map<String, Object>> getAccount(
             @Parameter(description = "Account ID") @PathVariable String accountId) {
-        Map<String, Object> account = new HashMap<>();
-        account.put("accountId", accountId);
-        account.put("accountNumber", "ACC" + accountId);
-        account.put("balance", new BigDecimal("5000.00"));
-        account.put("accountType", "SAVINGS");
-        account.put("status", "ACTIVE");
-        return ResponseEntity.ok(account);
+       try {
+
+        Optional<Account> accountOpt = AccountService.getAccountById(Long.valueOf(accountId));
+        if (accountOpt.isPresent()) {
+            Account account = accountOpt.get();
+            Map<String, Object> accountDetails = new HashMap<>();
+            accountDetails.put("accountId", account.getId());
+            accountDetails.put("accountNumber", account.getAccountNumber());
+            accountDetails.put("accountType", account.getAccountType());
+            accountDetails.put("balance", account.getBalance());
+            accountDetails.put("userId", account.getUser().getId());
+            return ResponseEntity.ok(accountDetails);
+        } else {
+            Map<String, Object> error = new HashMap<>();
+            error.put("error", "Account not found");
+            error.put("message", "No account found with ID: " + accountId);
+            return ResponseEntity.status(404).body(error);
+        }
+       } catch (Exception e) {
+        Map<String, Object> error = new HashMap<>();
+        error.put("error", "Failed to fetch account");
+        error.put("message", e.getMessage());
+        return ResponseEntity.status(500).body(error);
+       } 
     }
 
     @GetMapping("/{accountId}/balance")
