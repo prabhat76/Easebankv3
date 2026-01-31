@@ -23,8 +23,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  security:
-    enabled: false
+
   thymeleaf:
     cache: false
 
