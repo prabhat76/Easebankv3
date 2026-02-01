@@ -91,6 +91,10 @@ public class Transactions {
         this.createdAt = createdAt;
     }
 
+    public Transactions() {
+        // Default constructor
+    }
+
     public Transactions(Long id, String transactionId, BigDecimal amount, String type, String status,
             Account fromAccount, Account toAccount, LocalDateTime createdAt) {
         this.id = id;
