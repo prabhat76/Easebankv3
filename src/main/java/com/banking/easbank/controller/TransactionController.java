@@ -6,13 +6,19 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 
 import com.banking.easbank.entity.Transactions;
 import com.banking.easbank.entity.Account;
 import com.banking.easbank.repository.TransactionsRepository;
 import com.banking.easbank.repository.AccountRepository;
+import com.banking.easbank.dto.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,6 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/transactions")
@@ -32,73 +40,157 @@ public class TransactionController {
     @Autowired
     private AccountRepository accountRepository;
 
+    // Helper method to map Transactions entity to TransactionResponse DTO
+    private TransactionResponse mapToTransactionResponse(Transactions transaction) {
+        TransactionResponse dto = new TransactionResponse();
+        dto.setId(transaction.getId());
+        dto.setTransactionId(transaction.getTransactionId());
+        dto.setType(transaction.getType());
+        dto.setAmount(transaction.getAmount());
+        dto.setFromAccountId(transaction.getFromAccount() != null ? transaction.getFromAccount().getId() : null);
+        dto.setToAccountId(transaction.getToAccount() != null ? transaction.getToAccount().getId() : null);
+        dto.setStatus(transaction.getStatus());
+        dto.setCreatedAt(transaction.getCreatedAt());
+        return dto;
+    }
+
     @PostMapping("/transfer")
     @Operation(summary = "Transfer money", description = "Transfer money between accounts")
-    public ResponseEntity<Map<String, Object>> transferMoney(@RequestBody Map<String, Object> transferData) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("id", 1L);
-        response.put("transaction_id", java.util.UUID.randomUUID().toString());
-        response.put("from_account_id", transferData.get("fromAccountId"));
-        response.put("to_account_id", transferData.get("toAccountId"));
-        response.put("amount", new BigDecimal(transferData.get("amount").toString()));
-        response.put("type", "TRANSFER");
-        response.put("status", "SUCCESS");
-        response.put("created_at", LocalDateTime.now());
-        return ResponseEntity.ok(response);
+    @Transactional // Ensure atomicity for multiple database operations
+    public ResponseEntity<TransferResponse> transferMoney(@Valid @RequestBody TransferRequest transferRequest) {
+        TransferResponse response = new TransferResponse();
+        try {
+            Long fromAccountId = transferRequest.getFromAccountId();
+            Long toAccountId = transferRequest.getToAccountId();
+            BigDecimal amount = transferRequest.getAmount();
+
+            if (fromAccountId.equals(toAccountId)) {
+                response.setMessage("Cannot transfer money to the same account.");
+                return ResponseEntity.badRequest().body(response);
+            }
+
+            Optional<Account> fromAccountOpt = accountRepository.findById(fromAccountId);
+            Optional<Account> toAccountOpt = accountRepository.findById(toAccountId);
+
+            if (!fromAccountOpt.isPresent()) {
+                response.setMessage("Source account not found.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+            if (!toAccountOpt.isPresent()) {
+                response.setMessage("Destination account not found.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+            }
+
+            Account fromAccount = fromAccountOpt.get();
+            Account toAccount = toAccountOpt.get();
+
+            if (fromAccount.getBalance().compareTo(amount) < 0) {
+                response.setMessage("Insufficient balance in source account.");
+                return ResponseEntity.badRequest().body(response);
+            }
+
+            // Deduct from source account
+            fromAccount.setBalance(fromAccount.getBalance().subtract(amount));
+            accountRepository.save(fromAccount);
+
+            // Add to destination account
+            toAccount.setBalance(toAccount.getBalance().add(amount));
+            accountRepository.save(toAccount);
+
+            // Create debit transaction
+            Transactions debitTransaction = new Transactions();
+            debitTransaction.setTransactionId(UUID.randomUUID().toString());
+            debitTransaction.setFromAccount(fromAccount);
+            debitTransaction.setToAccount(toAccount); // To account is the recipient
+            debitTransaction.setAmount(amount);
+            debitTransaction.setType("TRANSFER_DEBIT");
+            debitTransaction.setStatus("COMPLETED");
+            debitTransaction.setCreatedAt(LocalDateTime.now());
+            transactionsRepository.save(debitTransaction);
+
+            // Create credit transaction
+            Transactions creditTransaction = new Transactions();
+            creditTransaction.setTransactionId(UUID.randomUUID().toString());
+            creditTransaction.setFromAccount(fromAccount); // From account is the sender
+            creditTransaction.setToAccount(toAccount);
+            creditTransaction.setAmount(amount);
+            creditTransaction.setType("TRANSFER_CREDIT");
+            creditTransaction.setStatus("COMPLETED");
+            creditTransaction.setCreatedAt(LocalDateTime.now());
+            transactionsRepository.save(creditTransaction);
+
+            response.setMessage("Transfer successful");
+            response.setTransactionIdDebit(debitTransaction.getTransactionId());
+            response.setTransactionIdCredit(creditTransaction.getTransactionId());
+            response.setFromAccountId(fromAccountId);
+            response.setToAccountId(toAccountId);
+            response.setAmount(amount);
+            response.setNewFromAccountBalance(fromAccount.getBalance());
+            response.setNewToAccountBalance(toAccount.getBalance());
+            response.setTimestamp(LocalDateTime.now());
+            return ResponseEntity.ok(response);
+
+        } catch (Exception e) {
+            response.setMessage("Failed to process transfer: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+        }
     }
 
     @GetMapping("/account/{accountId}")
     @Operation(summary = "Get transaction history", description = "Retrieve transaction history for an account")
-    public ResponseEntity<Map<String, Object>> getTransactionHistory(
-            @Parameter(description = "Account ID") @PathVariable String accountId,
+    public ResponseEntity<AccountTransactionHistoryResponse> getTransactionHistory(
+            @Parameter(description = "Account ID") @PathVariable Long accountId,
             @Parameter(description = "Page number") @RequestParam(defaultValue = "0") int page,
             @Parameter(description = "Page size") @RequestParam(defaultValue = "10") int size) {
         
-        Map<String, Object> transaction1 = new HashMap<>();
-        transaction1.put("id", 1L);
-        transaction1.put("transaction_id", "TXN001");
-        transaction1.put("type", "CREDIT");
-        transaction1.put("amount", new BigDecimal("1000.00"));
-        transaction1.put("status", "COMPLETED");
-        transaction1.put("created_at", LocalDateTime.now().minusDays(1));
+        AccountTransactionHistoryResponse response = new AccountTransactionHistoryResponse();
+        try {
+            Optional<Account> accountOpt = accountRepository.findById(accountId);
+            if (!accountOpt.isPresent()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
 
-        Map<String, Object> transaction2 = new HashMap<>();
-        transaction2.put("id", 2L);
-        transaction2.put("transaction_id", "TXN002");
-        transaction2.put("type", "DEBIT");
-        transaction2.put("amount", new BigDecimal("50.00"));
-        transaction2.put("status", "COMPLETED");
-        transaction2.put("created_at", LocalDateTime.now().minusHours(2));
+            PageRequest pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
+            Page<Transactions> transactionsPage = transactionsRepository.findByFromAccountIdOrToAccountId(accountId, accountId, pageable);
 
-        Map<String, Object> response = new HashMap<>();
-        response.put("accountId", accountId);
-        response.put("transactions", List.of(transaction1, transaction2));
-        response.put("page", page);
-        response.put("size", size);
-        response.put("totalElements", 2);
-        
-        return ResponseEntity.ok(response);
+            List<TransactionResponse> transactionResponses = transactionsPage.getContent().stream()
+                    .map(this::mapToTransactionResponse)
+                    .collect(Collectors.toList());
+
+            response.setAccountId(accountId);
+            response.setTransactions(transactionResponses);
+            response.setPage(transactionsPage.getNumber());
+            response.setSize(transactionsPage.getSize());
+            response.setTotalElements(transactionsPage.getTotalElements());
+
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/{transactionId}")
     @Operation(summary = "Get transaction details", description = "Get details of a specific transaction")
-    public ResponseEntity<Map<String, Object>> getTransaction(
+    public ResponseEntity<TransactionResponse> getTransaction(
             @Parameter(description = "Transaction ID") @PathVariable String transactionId) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("id", 1L);
-        response.put("transaction_id", transactionId);
-        response.put("type", "TRANSFER");
-        response.put("amount", new BigDecimal("500.00"));
-        response.put("from_account_id", 12345L);
-        response.put("to_account_id", 67890L);
-        response.put("status", "COMPLETED");
-        response.put("created_at", LocalDateTime.now());
-        return ResponseEntity.ok(response);
+        try {
+            Optional<Transactions> transactionOpt = transactionsRepository.findByTransactionId(transactionId);
+
+            if (!transactionOpt.isPresent()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+
+            TransactionResponse response = mapToTransactionResponse(transactionOpt.get());
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
 
     @PostMapping("/recalculate-balance/{accountId}")
     @Operation(summary = "Recalculate account balance", description = "Recalculate balance based on all transactions")
+    @Transactional // Ensure atomicity
     public ResponseEntity<Map<String, Object>> recalculateBalance(@PathVariable Long accountId) {
         try {
             Optional<Account> accountOpt = accountRepository.findById(accountId);
@@ -139,21 +231,18 @@ public class TransactionController {
 
     @PostMapping("/deposit")
     @Operation(summary = "Deposit money", description = "Deposit money into an account")
-    public ResponseEntity<Map<String, Object>> depositMoney(@RequestBody Map<String, Object> depositData) {
+    @Transactional // Ensure atomicity
+    public ResponseEntity<Map<String, Object>> depositMoney(@Valid @RequestBody DepositRequest depositRequest) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            if (depositData.get("from_account_id") == null || depositData.get("amount") == null) {
-                Map<String, Object> errorResponse = new HashMap<>();
-                errorResponse.put("error", "Missing required fields: from_account_id and amount");
-                return ResponseEntity.badRequest().body(errorResponse);
-            }
-            
-            Long accountId = Long.parseLong(depositData.get("from_account_id").toString());
+            Long accountId = depositRequest.getAccountId();
+            BigDecimal depositAmount = depositRequest.getAmount();
+
             Optional<Account> accountOpt = accountRepository.findById(accountId);
             
             if (!accountOpt.isPresent()) {
-                Map<String, Object> errorResponse = new HashMap<>();
                 errorResponse.put("error", "Account not found");
-                return ResponseEntity.badRequest().body(errorResponse);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
             
             Account account = accountOpt.get();
@@ -166,7 +255,7 @@ public class TransactionController {
             // Create and save transaction
             Transactions transaction = new Transactions();
             transaction.setTransactionId(java.util.UUID.randomUUID().toString());
-            transaction.setFromAccount(account);
+            transaction.setFromAccount(account); // For deposit, from and to can be the same account or null for external source
             transaction.setToAccount(account);
             transaction.setAmount(depositAmount);
             transaction.setType("DEPOSIT");
@@ -175,7 +264,6 @@ public class TransactionController {
             
             Transactions savedTransaction = transactionsRepository.save(transaction);
             
-            Map<String, Object> response = new HashMap<>();
             response.put("id", savedTransaction.getId());
             response.put("transaction_id", savedTransaction.getTransactionId());
             response.put("from_account_id", savedTransaction.getFromAccount().getId());
@@ -189,36 +277,33 @@ public class TransactionController {
         } catch (Exception e) {
             Map<String, Object> errorResponse = new HashMap<>();
             errorResponse.put("error", "Failed to process deposit: " + e.getMessage());
-            return ResponseEntity.status(500).body(errorResponse);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 
     @PostMapping("/withdraw")
     @Operation(summary = "Withdraw money", description = "Withdraw money from an account")
-    public ResponseEntity<Map<String, Object>> withdrawMoney(@RequestBody Map<String, Object> withdrawData) {
+    @Transactional // Ensure atomicity
+    public ResponseEntity<Map<String, Object>> withdrawMoney(@Valid @RequestBody WithdrawRequest withdrawRequest) {
+        Map<String, Object> response = new HashMap<>();
         try {
-            if (withdrawData.get("from_account_id") == null || withdrawData.get("amount") == null) {
-                Map<String, Object> errorResponse = new HashMap<>();
-                errorResponse.put("error", "Missing required fields: from_account_id and amount");
-                return ResponseEntity.badRequest().body(errorResponse);
-            }
-            
-            Long accountId = Long.parseLong(withdrawData.get("from_account_id").toString());
+            Long accountId = withdrawRequest.getAccountId();
+            BigDecimal withdrawAmount = withdrawRequest.getAmount();
+
             Optional<Account> accountOpt = accountRepository.findById(accountId);
             
             if (!accountOpt.isPresent()) {
-                Map<String, Object> errorResponse = new HashMap<>();
                 errorResponse.put("error", "Account not found");
-                return ResponseEntity.badRequest().body(errorResponse);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
             
             Account account = accountOpt.get();
-            BigDecimal withdrawAmount = new BigDecimal(withdrawData.get("amount").toString());
             
             // Check sufficient balance
             if (account.getBalance().compareTo(withdrawAmount) < 0) {
-                Map<String, Object> errorResponse = new HashMap<>();
                 errorResponse.put("error", "Insufficient balance");
+                errorResponse.put("currentBalance", account.getBalance());
+                errorResponse.put("withdrawalAmount", withdrawAmount);
                 return ResponseEntity.badRequest().body(errorResponse);
             }
             
@@ -230,7 +315,7 @@ public class TransactionController {
             Transactions transaction = new Transactions();
             transaction.setTransactionId(java.util.UUID.randomUUID().toString());
             transaction.setFromAccount(account);
-            transaction.setToAccount(account);
+            transaction.setToAccount(account); // For withdrawal, from and to can be the same account or null for external destination
             transaction.setAmount(withdrawAmount);
             transaction.setType("WITHDRAWAL");
             transaction.setStatus("SUCCESS");
@@ -238,7 +323,6 @@ public class TransactionController {
             
             Transactions savedTransaction = transactionsRepository.save(transaction);
             
-            Map<String, Object> response = new HashMap<>();
             response.put("id", savedTransaction.getId());
             response.put("transaction_id", savedTransaction.getTransactionId());
             response.put("from_account_id", savedTransaction.getFromAccount().getId());
@@ -253,7 +337,7 @@ public class TransactionController {
         } catch (Exception e) {
             Map<String, Object> errorResponse = new HashMap<>();
             errorResponse.put("error", "Failed to process withdrawal: " + e.getMessage());
-            return ResponseEntity.status(500).body(errorResponse);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 

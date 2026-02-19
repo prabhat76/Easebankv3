@@ -4,11 +4,15 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import com.banking.easbank.entity.Account;
 import com.banking.easbank.entity.User;
 import com.banking.easbank.service.AccountService;
 import com.banking.easbank.service.UserService;
+import com.banking.easbank.dto.AccountOpeningRequest;
+import com.banking.easbank.dto.AccountDetailsResponse;
+import com.banking.easbank.dto.AccountBalanceResponse;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,58 +29,61 @@ public class AccountController {
     private AccountService AccountService;
     @GetMapping("/{accountId}")
     @Operation(summary = "Get account details", description = "Retrieve account information by account ID")
-    public ResponseEntity<Map<String, Object>> getAccount(
-            @Parameter(description = "Account ID") @PathVariable String accountId) {
+    public ResponseEntity<AccountDetailsResponse> getAccount(
+            @Parameter(description = "Account ID") @PathVariable Long accountId) {
        try {
 
-        Optional<Account> accountOpt = AccountService.getAccountById(Long.valueOf(accountId));
+        Optional<Account> accountOpt = AccountService.getAccountById(accountId);
         if (accountOpt.isPresent()) {
             Account account = accountOpt.get();
-            Map<String, Object> accountDetails = new HashMap<>();
-            accountDetails.put("accountId", account.getId());
-            accountDetails.put("accountNumber", account.getAccountNumber());
-            accountDetails.put("accountType", account.getAccountType());
-            accountDetails.put("balance", account.getBalance());
-            accountDetails.put("userId", account.getUser().getId());
+            AccountDetailsResponse accountDetails = new AccountDetailsResponse();
+            accountDetails.setAccountId(account.getId());
+            accountDetails.setAccountNumber(account.getAccountNumber());
+            accountDetails.setAccountType(account.getAccountType());
+            accountDetails.setBalance(account.getBalance());
+            accountDetails.setUserId(account.getUser().getId());
             return ResponseEntity.ok(accountDetails);
         } else {
-            Map<String, Object> error = new HashMap<>();
-            error.put("error", "Account not found");
-            error.put("message", "No account found with ID: " + accountId);
-            return ResponseEntity.status(404).body(error);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
        } catch (Exception e) {
-        Map<String, Object> error = new HashMap<>();
-        error.put("error", "Failed to fetch account");
-        error.put("message", e.getMessage());
-        return ResponseEntity.status(500).body(error);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
        } 
     }
 
     @GetMapping("/{accountId}/balance")
     @Operation(summary = "Check account balance", description = "Get current balance of the account")
-    public ResponseEntity<Map<String, Object>> getBalance(
-            @Parameter(description = "Account ID") @PathVariable String accountId) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("accountId", accountId);
-        response.put("balance", new BigDecimal("5000.00"));
-        response.put("currency", "USD");
-        return ResponseEntity.ok(response);
+    public ResponseEntity<AccountBalanceResponse> getBalance(
+            @Parameter(description = "Account ID") @PathVariable Long accountId) {
+        AccountBalanceResponse response = new AccountBalanceResponse();
+        try {
+            Optional<Account> accountOpt = AccountService.getAccountById(accountId);
+            if (!accountOpt.isPresent()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+            Account account = accountOpt.get();
+            response.setAccountId(accountId);
+            response.setBalance(account.getBalance());
+            response.setCurrency("USD"); // Assuming USD as default currency
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @PostMapping("/AccountOpening")
     @Operation(summary = "Open account for existing user", description = "Open account using email or userId")
-    public ResponseEntity<Map<String, Object>> openAccount(@RequestBody Map<String, Object> request) {
+    public ResponseEntity<Map<String, Object>> openAccount(@Valid @RequestBody AccountOpeningRequest request) {
         try {
             Long userId = null;
             
             // Check if userId is provided
-            if (request.containsKey("userId")) {
-                userId = Long.valueOf(request.get("userId").toString());
+            if (request.getUserId() != null) {
+                userId = request.getUserId();
             } 
             // Check if email is provided instead
-            else if (request.containsKey("email")) {
-                String email = request.get("email").toString();
+            else if (request.getEmail() != null && !request.getEmail().isEmpty()) {
+                String email = request.getEmail();
                 Optional<User> user = userService.findByEmail(email);
                 if (user.isPresent()) {
                     userId = user.get().getId();
@@ -93,8 +100,8 @@ public class AccountController {
                 return ResponseEntity.status(400).body(error);
             }
             
-            String accountType = request.get("accountType").toString();
-            BigDecimal initialDeposit = new BigDecimal(request.get("initialDeposit").toString());
+            String accountType = request.getAccountType();
+            BigDecimal initialDeposit = request.getInitialDeposit();
             
             Account account = AccountService.openAccount(userId, accountType, initialDeposit);
             
@@ -111,7 +118,7 @@ public class AccountController {
             Map<String, Object> error = new HashMap<>();
             error.put("error", "Account opening failed");
             error.put("message", e.getMessage());
-            return ResponseEntity.status(400).body(error);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
         }
     }
 }
