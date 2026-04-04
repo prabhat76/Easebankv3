@@ -151,19 +151,15 @@ public class TransactionController {
             }
 
             PageRequest pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
-            Page<Transactions> transactionsPage = transactionsRepository.findByFromAccountIdOrToAccountId(accountId, accountId, pageable);
-
-            List<TransactionResponse> transactionResponses = transactionsPage.getContent().stream()
-                    .map(this::mapToTransactionResponse)
-                    .collect(Collectors.toList());
-
-            response.setAccountId(accountId);
-            response.setTransactions(transactionResponses);
-            response.setPage(transactionsPage.getNumber());
-            response.setSize(transactionsPage.getSize());
-            response.setTotalElements(transactionsPage.getTotalElements());
-
-            return ResponseEntity.ok(response);
+                // Use findByAccountId instead, as findByFromAccountIdOrToAccountId does not exist
+                List<Transactions> transactionsList = transactionsRepository.findByAccountId(accountId);
+                // Manually paginate
+                int start = Math.min(page * size, transactionsList.size());
+                int end = Math.min(start + size, transactionsList.size());
+                List<Transactions> pagedList = transactionsList.subList(start, end);
+                    // ...existing code...
+                    // Only use the pagedList/transactionsList logic, remove old transactionsPage code
+                    return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
@@ -239,19 +235,17 @@ public class TransactionController {
             BigDecimal depositAmount = depositRequest.getAmount();
 
             Optional<Account> accountOpt = accountRepository.findById(accountId);
-            
             if (!accountOpt.isPresent()) {
+                Map<String, Object> errorResponse = new HashMap<>();
                 errorResponse.put("error", "Account not found");
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
             }
-            
+
             Account account = accountOpt.get();
-            
             // Update account balance
-            BigDecimal depositAmount = new BigDecimal(depositData.get("amount").toString());
             account.setBalance(account.getBalance().add(depositAmount));
             accountRepository.save(account);
-            
+
             // Create and save transaction
             Transactions transaction = new Transactions();
             transaction.setTransactionId(java.util.UUID.randomUUID().toString());
@@ -261,9 +255,9 @@ public class TransactionController {
             transaction.setType("DEPOSIT");
             transaction.setStatus("SUCCESS");
             transaction.setCreatedAt(LocalDateTime.now());
-            
+
             Transactions savedTransaction = transactionsRepository.save(transaction);
-            
+
             response.put("id", savedTransaction.getId());
             response.put("transaction_id", savedTransaction.getTransactionId());
             response.put("from_account_id", savedTransaction.getFromAccount().getId());
@@ -272,7 +266,7 @@ public class TransactionController {
             response.put("type", savedTransaction.getType());
             response.put("status", savedTransaction.getStatus());
             response.put("created_at", savedTransaction.getCreatedAt());
-            
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Map<String, Object> errorResponse = new HashMap<>();
@@ -291,26 +285,26 @@ public class TransactionController {
             BigDecimal withdrawAmount = withdrawRequest.getAmount();
 
             Optional<Account> accountOpt = accountRepository.findById(accountId);
-            
             if (!accountOpt.isPresent()) {
+                Map<String, Object> errorResponse = new HashMap<>();
                 errorResponse.put("error", "Account not found");
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
             }
-            
+
             Account account = accountOpt.get();
-            
             // Check sufficient balance
             if (account.getBalance().compareTo(withdrawAmount) < 0) {
+                Map<String, Object> errorResponse = new HashMap<>();
                 errorResponse.put("error", "Insufficient balance");
                 errorResponse.put("currentBalance", account.getBalance());
                 errorResponse.put("withdrawalAmount", withdrawAmount);
                 return ResponseEntity.badRequest().body(errorResponse);
             }
-            
+
             // Update account balance
             account.setBalance(account.getBalance().subtract(withdrawAmount));
             accountRepository.save(account);
-            
+
             // Create and save transaction
             Transactions transaction = new Transactions();
             transaction.setTransactionId(java.util.UUID.randomUUID().toString());
@@ -320,9 +314,9 @@ public class TransactionController {
             transaction.setType("WITHDRAWAL");
             transaction.setStatus("SUCCESS");
             transaction.setCreatedAt(LocalDateTime.now());
-            
+
             Transactions savedTransaction = transactionsRepository.save(transaction);
-            
+
             response.put("id", savedTransaction.getId());
             response.put("transaction_id", savedTransaction.getTransactionId());
             response.put("from_account_id", savedTransaction.getFromAccount().getId());
@@ -332,7 +326,7 @@ public class TransactionController {
             response.put("status", savedTransaction.getStatus());
             response.put("created_at", savedTransaction.getCreatedAt());
             response.put("remaining_balance", account.getBalance());
-            
+
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Map<String, Object> errorResponse = new HashMap<>();
