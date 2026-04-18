@@ -1,15 +1,28 @@
 # GitLab CI/CD pipeline for Spring Boot (Maven)
 
 stages:
+  - lint
   - build
   - test
+  - coverage
+  - integration
+  - docker
+  - deploy
 
 variables:
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end"
+  DOCKER_IMAGE: "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
 
 cache:
   paths:
     - .m2/repository
+
+lint:
+  stage: lint
+  image: maven:3.9.6-eclipse-temurin-21
+  script:
+    - mvn $MAVEN_CLI_OPTS checkstyle:check
+  allow_failure: true
 
 build:
   stage: build
@@ -27,3 +40,60 @@ unit_test:
     - mvn $MAVEN_CLI_OPTS test -Dnet.bytebuddy.experimental=true
   dependencies:
     - build
+  artifacts:
+    paths:
+      - target/surefire-reports/
+
+coverage:
+  stage: coverage
+  image: maven:3.9.6-eclipse-temurin-21
+  script:
+    - mvn $MAVEN_CLI_OPTS jacoco:prepare-agent test jacoco:report -Dnet.bytebuddy.experimental=true
+  dependencies:
+    - build
+  artifacts:
+    paths:
+      - target/site/jacoco/
+
+integration:
+  stage: integration
+  image: maven:3.9.6-eclipse-temurin-21
+  services:
+    - name: mysql:8.0
+      alias: mysql
+    - name: mcr.microsoft.com/mssql/server:2022-latest
+      alias: sqlserver
+  variables:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: testdb
+    ACCEPT_EULA: Y
+    SA_PASSWORD: "YourStrong!Passw0rd"
+  script:
+    - mvn $MAVEN_CLI_OPTS verify -Dspring.profiles.active=test -Dnet.bytebuddy.experimental=true
+  dependencies:
+    - build
+  artifacts:
+    paths:
+      - target/failsafe-reports/
+
+docker:
+  stage: docker
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker build -t "$DOCKER_IMAGE" .
+    - docker push "$DOCKER_IMAGE"
+  only:
+    - main
+    - master
+
+deploy:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "Deploy step here (e.g., kubectl, scp, az cli, etc.)"
+  only:
+    - main
+    - master
