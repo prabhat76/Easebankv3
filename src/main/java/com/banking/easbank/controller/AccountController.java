@@ -1,3 +1,4 @@
+import jakarta.validation.Valid;
 package com.banking.easbank.controller;
 
 // ...existing code...
