@@ -1,4 +1,6 @@
 package com.banking.easbank.controller;
+
+import jakarta.validation.Valid;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,6 +20,8 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/accounts")
