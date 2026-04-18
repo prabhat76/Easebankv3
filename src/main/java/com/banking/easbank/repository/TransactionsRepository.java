@@ -13,6 +13,8 @@ import java.util.Optional;
 
 @Repository
 public interface TransactionsRepository extends JpaRepository<Transactions, Long> {
+        // Find transactions where fromAccountId or toAccountId matches, paginated
+        Page<Transactions> findByFromAccountIdOrToAccountId(Long fromAccountId, Long toAccountId, Pageable pageable);
     
     // Find by transaction ID
     Optional<Transactions> findByTransactionId(String transactionId);
