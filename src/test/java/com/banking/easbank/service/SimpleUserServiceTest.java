@@ -17,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.banking.easbank.entity.User;
 import com.banking.easbank.repository.UserRepository;
+import com.banking.easbank.service.UserServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
 class SimpleUserServiceTest {
@@ -25,7 +26,7 @@ class SimpleUserServiceTest {
     private UserRepository userRepository;
 
     @InjectMocks
-    private UserService userService;
+    private UserServiceImpl userService;
 
     private User testUser;
 

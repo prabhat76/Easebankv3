@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 import com.banking.easbank.entity.Account;
 import com.banking.easbank.entity.User;
 import com.banking.easbank.service.AccountService;
@@ -26,14 +27,14 @@ public class AccountController {
     @Autowired
     private UserService userService;
     @Autowired
-    private AccountService AccountService;
+    private AccountService accountService;
     @GetMapping("/{accountId}")
     @Operation(summary = "Get account details", description = "Retrieve account information by account ID")
     public ResponseEntity<AccountDetailsResponse> getAccount(
             @Parameter(description = "Account ID") @PathVariable Long accountId) {
        try {
 
-        Optional<Account> accountOpt = AccountService.getAccountById(accountId);
+        Optional<Account> accountOpt = accountService.getAccountById(accountId);
         if (accountOpt.isPresent()) {
             Account account = accountOpt.get();
             AccountDetailsResponse accountDetails = new AccountDetailsResponse();
@@ -57,7 +58,7 @@ public class AccountController {
             @Parameter(description = "Account ID") @PathVariable Long accountId) {
         AccountBalanceResponse response = new AccountBalanceResponse();
         try {
-            Optional<Account> accountOpt = AccountService.getAccountById(accountId);
+            Optional<Account> accountOpt = accountService.getAccountById(accountId);
             if (!accountOpt.isPresent()) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
@@ -103,7 +104,7 @@ public class AccountController {
             String accountType = request.getAccountType();
             BigDecimal initialDeposit = request.getInitialDeposit();
             
-            Account account = AccountService.openAccount(userId, accountType, initialDeposit);
+            Account account = accountService.openAccount(userId, accountType, initialDeposit);
             
             Map<String, Object> response = new HashMap<>();
             response.put("message", "Account opened successfully");

@@ -29,6 +29,13 @@ public class UserController {
         return ResponseEntity.ok(savedUser);
     }
 
+    @PostMapping
+    @Operation(summary = "Create user (integration test support)", description = "Create a new user for integration tests.")
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+        User savedUser = userService.saveUser(user);
+        return ResponseEntity.ok(savedUser);
+    }
+
     @GetMapping("/{userId}")
     @Operation(summary = "Get user profile", description = "Retrieve user profile information")
     public ResponseEntity<User> getUserProfile(
@@ -67,6 +74,6 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(
             @Parameter(description = "User ID") @PathVariable Long userId) {
         userService.deleteUser(userId);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
