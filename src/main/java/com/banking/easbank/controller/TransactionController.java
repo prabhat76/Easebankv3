@@ -231,8 +231,9 @@ public class TransactionController {
 
             Optional<Account> accountOpt = accountRepository.findById(accountId);
             if (!accountOpt.isPresent()) {
-                response.put("error", "Account not found");
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+                Map<String, Object> errorResponse = new HashMap<>();
+                errorResponse.put("error", "Account not found");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
             }
 
             Account account = accountOpt.get();
@@ -263,8 +264,9 @@ public class TransactionController {
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            response.put("error", "Failed to process deposit: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Failed to process deposit: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 
