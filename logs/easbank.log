@@ -1,0 +1,412 @@
+2026-04-18 22:33:11 [main] INFO  c.b.e.repository.UserRepositoryTest - Starting UserRepositoryTest using Java 25.0.2 with PID 86210 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:33:11 [main] INFO  c.b.e.repository.UserRepositoryTest - No active profile set, falling back to 1 default profile: "default"
+2026-04-18 22:33:11 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-18 22:33:11 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 4 JPA repository interfaces.
+2026-04-18 22:33:11 [main] INFO  o.s.b.t.a.j.TestDatabaseAutoConfiguration$EmbeddedDataSourceBeanFactoryPostProcessor - Replacing 'dataSource' DataSource bean with embedded version
+2026-04-18 22:33:11 [main] INFO  o.s.j.d.e.EmbeddedDatabaseFactory - Starting embedded database: url='jdbc:h2:mem:8b0681b7-1a42-43b5-832a-839b69e91a42;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-04-18 22:33:11 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-18 22:33:11 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+2026-04-18 22:33:11 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-18 22:33:11 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-18 22:33:11 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-18 22:33:12 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-18 22:33:12 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:33:12 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-18 22:33:12 [main] INFO  c.b.e.repository.UserRepositoryTest - Started UserRepositoryTest in 1.57 seconds (process running for 2.035)
+2026-04-18 22:33:13 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.banking.easbank.integration.BankingApplicationIntegrationTest]: BankingApplicationIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-18 22:33:13 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.banking.easbank.EasbankApplication for test class com.banking.easbank.integration.BankingApplicationIntegrationTest
+2026-04-18 22:33:13 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2026-04-18 22:33:13 [main] INFO  c.b.e.i.BankingApplicationIntegrationTest - Starting BankingApplicationIntegrationTest using Java 25.0.2 with PID 86210 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:33:13 [main] DEBUG c.b.e.i.BankingApplicationIntegrationTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+2026-04-18 22:33:13 [main] INFO  c.b.e.i.BankingApplicationIntegrationTest - The following 1 profile is active: "test"
+2026-04-18 22:33:13 [main] DEBUG o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@4e293c35
+2026-04-18 22:33:13 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-18 22:33:13 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 4 JPA repository interfaces.
+2026-04-18 22:33:13 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-18 22:33:13 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-18 22:33:13 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-18 22:33:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-18 22:33:13 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn11: url=jdbc:h2:mem:testdb user=SA
+2026-04-18 22:33:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-18 22:33:13 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-18 22:33:13 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-18 22:33:13 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:33:13 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-18 22:33:13 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 65b644b0-36af-488b-a6c4-9a7f6650ffbe
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-18 22:33:13 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-04-18 22:33:13 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 24 mappings in 'requestMappingHandlerMapping'
+2026-04-18 22:33:13 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2026-04-18 22:33:14 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-04-18 22:33:14 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@ec9f91b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@32ca397b, org.springframework.security.web.context.SecurityContextHolderFilter@193bf20, org.springframework.security.web.header.HeaderWriterFilter@62497b5d, org.springframework.web.filter.CorsFilter@41c02b8c, org.springframework.security.web.authentication.logout.LogoutFilter@5d1ddb65, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a52b5f8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@630fa11e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1a787480, org.springframework.security.web.access.ExceptionTranslationFilter@537e8a15, org.springframework.security.web.access.intercept.AuthorizationFilter@21f9b360]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-04-18 22:33:14 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-04-18 22:33:14 [main] DEBUG o.s.w.f.ServerHttpObservationFilter - Filter 'webMvcObservationFilter' configured for use
+2026-04-18 22:33:14 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-18 22:33:14 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-04-18 22:33:14 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-18 22:33:14 [main] INFO  c.b.e.i.BankingApplicationIntegrationTest - Started BankingApplicationIntegrationTest in 1.283 seconds (process running for 3.722)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#createUser(User)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.banking.easbank.entity.User@400a5164]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.entity.User@400a5164]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.banking.easbank.dto.LoginRequest@34a2e10c]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{firstName=Integration, logintime=2026-04-18T22:33:14.465003, message=Login successful, userId=1, em (truncated)...]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AccountController#openAccount(AccountOpeningRequest)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.banking.easbank.dto.AccountOpeningRequest@7ec65043]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{accountId=1, balance=1000.0, accountType=SAVINGS, message=Account opened successfully, accountNumbe (truncated)...]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AccountController#getAccount(Long)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.dto.AccountDetailsResponse@54e8f10a]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.banking.easbank.dto.LoginRequest@49bf800f]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:33:14 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.banking.easbank.controller.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-18 22:33:14 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.banking.easbank.EasbankApplication for test class com.banking.easbank.controller.UserControllerTest
+2026-04-18 22:33:14 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2026-04-18 22:33:14 [main] INFO  c.b.e.controller.UserControllerTest - Starting UserControllerTest using Java 25.0.2 with PID 86210 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:33:14 [main] DEBUG c.b.e.controller.UserControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+2026-04-18 22:33:14 [main] INFO  c.b.e.controller.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+2026-04-18 22:33:14 [main] DEBUG o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@626db270
+2026-04-18 22:33:14 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 8 mappings in 'requestMappingHandlerMapping'
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-04-18 22:33:14 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 53a4a269-91a0-49a3-8cce-9c9d72f865d0
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-18 22:33:14 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4d1f1b98, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@36011924, org.springframework.security.web.context.SecurityContextHolderFilter@979c3cb, org.springframework.security.web.header.HeaderWriterFilter@6eac0029, org.springframework.web.filter.CorsFilter@5ff1aece, org.springframework.security.web.csrf.CsrfFilter@28d9bd86, org.springframework.security.web.authentication.logout.LogoutFilter@24ad3cd0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4cd47801, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@8c2bb88, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@1a611ec7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@68e5b609, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ca96aef, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6614e25, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2f1705c8, org.springframework.security.web.access.ExceptionTranslationFilter@2f78ab54, org.springframework.security.web.access.intercept.AuthorizationFilter@22059c63]
+2026-04-18 22:33:14 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-18 22:33:14 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-04-18 22:33:14 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-18 22:33:14 [main] INFO  c.b.e.controller.UserControllerTest - Started UserControllerTest in 0.149 seconds (process running for 4.039)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#deleteUser(Long)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Nothing to write: null body
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#getUserProfile(Long)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.entity.User@67fd59f]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#updateUserProfile(Long, User)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.entity.User@30906ad3]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Nothing to write: null body
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#createUser(User)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.entity.User@ce5417f]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.entity.User@5d3dbf56]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#getUserProfile(Long)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Nothing to write: null body
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#updateUserProfile(Long, User)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.entity.User@3823d3d1]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.entity.User@6f3b07ed]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#getAllUsers()
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[com.banking.easbank.entity.User@5f9f6511]]
+2026-04-18 22:33:14 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.banking.easbank.controller.AuthControllerTest]: AuthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-18 22:33:14 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.banking.easbank.EasbankApplication for test class com.banking.easbank.controller.AuthControllerTest
+2026-04-18 22:33:14 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2026-04-18 22:33:14 [main] INFO  c.b.e.controller.AuthControllerTest - Starting AuthControllerTest using Java 25.0.2 with PID 86210 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:33:14 [main] DEBUG c.b.e.controller.AuthControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+2026-04-18 22:33:14 [main] INFO  c.b.e.controller.AuthControllerTest - No active profile set, falling back to 1 default profile: "default"
+2026-04-18 22:33:14 [main] DEBUG o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@6c9dd79d
+2026-04-18 22:33:14 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-04-18 22:33:14 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: c5f65655-0425-4382-a65a-e57578ad2ab0
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-18 22:33:14 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2b833ee7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@315ccea2, org.springframework.security.web.context.SecurityContextHolderFilter@1e695be6, org.springframework.security.web.header.HeaderWriterFilter@6553527e, org.springframework.web.filter.CorsFilter@559b4958, org.springframework.security.web.csrf.CsrfFilter@10ea88c7, org.springframework.security.web.authentication.logout.LogoutFilter@12c539be, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6170aa63, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@16546957, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@14a00e66, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5ac3673a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a81545c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@696b06a6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@26e66e13, org.springframework.security.web.access.ExceptionTranslationFilter@555cc0ba, org.springframework.security.web.access.intercept.AuthorizationFilter@16819885]
+2026-04-18 22:33:14 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-18 22:33:14 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-04-18 22:33:14 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-18 22:33:14 [main] INFO  c.b.e.controller.AuthControllerTest - Started AuthControllerTest in 0.126 seconds (process running for 4.208)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@2ef08ad0]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@2fab6393]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@9b195c4]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{firstName=John, logintime=2026-04-18T22:33:14.834663, message=Login successful, userId=1, email=tes (truncated)...]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@67a84d80]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@21d297a]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:33:14 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:33:14 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.banking.easbank.EasbankApplicationTests]: EasbankApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-18 22:33:14 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.banking.easbank.EasbankApplication for test class com.banking.easbank.EasbankApplicationTests
+2026-04-18 22:33:14 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2026-04-18 22:33:14 [main] INFO  c.b.easbank.EasbankApplicationTests - Starting EasbankApplicationTests using Java 25.0.2 with PID 86210 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:33:14 [main] DEBUG c.b.easbank.EasbankApplicationTests - Running with Spring Boot v3.2.2, Spring v6.1.3
+2026-04-18 22:33:14 [main] INFO  c.b.easbank.EasbankApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-04-18 22:33:14 [main] DEBUG o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@6baf95f9
+2026-04-18 22:33:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-18 22:33:14 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 4 JPA repository interfaces.
+2026-04-18 22:33:14 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-18 22:33:14 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-18 22:33:14 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-18 22:33:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-04-18 22:33:14 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn21: url=jdbc:h2:mem:testdb user=SA
+2026-04-18 22:33:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-04-18 22:33:14 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-18 22:33:15 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-18 22:33:15 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:33:15 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-18 22:33:15 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 322c7112-3575-40b0-a820-fe3031e9cd8f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-18 22:33:15 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-04-18 22:33:15 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 24 mappings in 'requestMappingHandlerMapping'
+2026-04-18 22:33:15 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2026-04-18 22:33:15 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-04-18 22:33:15 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3b0ee640, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@145ac215, org.springframework.security.web.context.SecurityContextHolderFilter@11f4c488, org.springframework.security.web.header.HeaderWriterFilter@6efa59d6, org.springframework.web.filter.CorsFilter@e64ef0a, org.springframework.security.web.authentication.logout.LogoutFilter@46883090, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@404d1a6f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2d30d676, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63f48de4, org.springframework.security.web.access.ExceptionTranslationFilter@63157033, org.springframework.security.web.access.intercept.AuthorizationFilter@6a38a87c]
+2026-04-18 22:33:15 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-04-18 22:33:15 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-04-18 22:33:15 [main] INFO  c.b.easbank.EasbankApplicationTests - Started EasbankApplicationTests in 0.416 seconds (process running for 4.651)
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@4e293c35, started on Sat Apr 18 22:33:13 IST 2026
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@626db270, started on Sat Apr 18 22:33:14 IST 2026
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@6c9dd79d, started on Sat Apr 18 22:33:14 IST 2026
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@6baf95f9, started on Sat Apr 18 22:33:14 IST 2026
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-04-18 22:33:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-04-18 22:37:36 [main] INFO  c.b.e.repository.UserRepositoryTest - Starting UserRepositoryTest using Java 25.0.2 with PID 87472 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:37:36 [main] INFO  c.b.e.repository.UserRepositoryTest - No active profile set, falling back to 1 default profile: "default"
+2026-04-18 22:37:36 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-18 22:37:36 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 24 ms. Found 4 JPA repository interfaces.
+2026-04-18 22:37:36 [main] INFO  o.s.b.t.a.j.TestDatabaseAutoConfiguration$EmbeddedDataSourceBeanFactoryPostProcessor - Replacing 'dataSource' DataSource bean with embedded version
+2026-04-18 22:37:36 [main] INFO  o.s.j.d.e.EmbeddedDatabaseFactory - Starting embedded database: url='jdbc:h2:mem:d4244510-8662-4b96-968a-4d6c2fda6cea;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-04-18 22:37:37 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-18 22:37:37 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.1.Final
+2026-04-18 22:37:37 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-18 22:37:37 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-18 22:37:37 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-18 22:37:37 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-18 22:37:37 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:37:37 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-18 22:37:37 [main] INFO  c.b.e.repository.UserRepositoryTest - Started UserRepositoryTest in 1.523 seconds (process running for 1.981)
+2026-04-18 22:37:38 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.banking.easbank.integration.BankingApplicationIntegrationTest]: BankingApplicationIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-18 22:37:38 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.banking.easbank.EasbankApplication for test class com.banking.easbank.integration.BankingApplicationIntegrationTest
+2026-04-18 22:37:38 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2026-04-18 22:37:38 [main] INFO  c.b.e.i.BankingApplicationIntegrationTest - Starting BankingApplicationIntegrationTest using Java 25.0.2 with PID 87472 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:37:38 [main] DEBUG c.b.e.i.BankingApplicationIntegrationTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+2026-04-18 22:37:38 [main] INFO  c.b.e.i.BankingApplicationIntegrationTest - The following 1 profile is active: "test"
+2026-04-18 22:37:38 [main] DEBUG o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@2940eec0
+2026-04-18 22:37:38 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-18 22:37:38 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 4 JPA repository interfaces.
+2026-04-18 22:37:38 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-18 22:37:38 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-18 22:37:38 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-18 22:37:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-04-18 22:37:38 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn11: url=jdbc:h2:mem:testdb user=SA
+2026-04-18 22:37:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-04-18 22:37:38 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-18 22:37:38 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-18 22:37:38 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:37:39 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-18 22:37:39 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 176bcd89-1e83-4451-8d31-fa9b7a9b3baa
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-18 22:37:39 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 24 mappings in 'requestMappingHandlerMapping'
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2026-04-18 22:37:39 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-04-18 22:37:39 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@19b0f61c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5d1ddb65, org.springframework.security.web.context.SecurityContextHolderFilter@3f7a48a1, org.springframework.security.web.header.HeaderWriterFilter@d278065, org.springframework.web.filter.CorsFilter@4c963d59, org.springframework.security.web.authentication.logout.LogoutFilter@384d40a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@42530cd6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7aafcef3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2dfc833b, org.springframework.security.web.access.ExceptionTranslationFilter@516dd567, org.springframework.security.web.access.intercept.AuthorizationFilter@5b293cc9]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-04-18 22:37:39 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2026-04-18 22:37:39 [main] DEBUG o.s.w.f.ServerHttpObservationFilter - Filter 'webMvcObservationFilter' configured for use
+2026-04-18 22:37:39 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-18 22:37:39 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-04-18 22:37:39 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2026-04-18 22:37:39 [main] INFO  c.b.e.i.BankingApplicationIntegrationTest - Started BankingApplicationIntegrationTest in 1.308 seconds (process running for 3.666)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#createUser(User)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.banking.easbank.entity.User@688fa02f]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.entity.User@688fa02f]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.banking.easbank.dto.LoginRequest@6fb03f5]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{firstName=Integration, logintime=2026-04-18T22:37:39.753352, message=Login successful, userId=1, em (truncated)...]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AccountController#openAccount(AccountOpeningRequest)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.banking.easbank.dto.AccountOpeningRequest@7f3964b0]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{accountId=1, balance=1000.0, accountType=SAVINGS, message=Account opened successfully, accountNumbe (truncated)...]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AccountController#getAccount(Long)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.dto.AccountDetailsResponse@7b787996]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [com.banking.easbank.dto.LoginRequest@4f8aa5fe]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:37:39 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.banking.easbank.controller.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-18 22:37:39 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.banking.easbank.EasbankApplication for test class com.banking.easbank.controller.UserControllerTest
+2026-04-18 22:37:39 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2026-04-18 22:37:39 [main] INFO  c.b.e.controller.UserControllerTest - Starting UserControllerTest using Java 25.0.2 with PID 87472 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:37:39 [main] DEBUG c.b.e.controller.UserControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+2026-04-18 22:37:39 [main] INFO  c.b.e.controller.UserControllerTest - No active profile set, falling back to 1 default profile: "default"
+2026-04-18 22:37:39 [main] DEBUG o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7346bede
+2026-04-18 22:37:39 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 8 mappings in 'requestMappingHandlerMapping'
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-04-18 22:37:39 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 90b576b3-cf99-47c5-b892-5e5d115b3426
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-18 22:37:39 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@37d4b676, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6801536, org.springframework.security.web.context.SecurityContextHolderFilter@5f8cd1e5, org.springframework.security.web.header.HeaderWriterFilter@275aac80, org.springframework.web.filter.CorsFilter@4142586b, org.springframework.security.web.csrf.CsrfFilter@fc71426, org.springframework.security.web.authentication.logout.LogoutFilter@3300d3bf, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6b57ac6a, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@3f6edaf8, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4966454a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@16139b0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@685d9816, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d225170, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5b133d16, org.springframework.security.web.access.ExceptionTranslationFilter@49ed96e3, org.springframework.security.web.access.intercept.AuthorizationFilter@5e86dc1c]
+2026-04-18 22:37:39 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-18 22:37:39 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-04-18 22:37:39 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-18 22:37:39 [main] INFO  c.b.e.controller.UserControllerTest - Started UserControllerTest in 0.139 seconds (process running for 3.973)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#deleteUser(Long)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Nothing to write: null body
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#getUserProfile(Long)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.entity.User@4a02197b]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#updateUserProfile(Long, User)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.entity.User@47b530e0]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Nothing to write: null body
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#createUser(User)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.entity.User@1baab1b1]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.entity.User@1c833e78]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#getUserProfile(Long)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Nothing to write: null body
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#updateUserProfile(Long, User)
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.entity.User@7effdd04]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [com.banking.easbank.entity.User@604c8ed5]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.UserController#getAllUsers()
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:39 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [[com.banking.easbank.entity.User@2bc7e895]]
+2026-04-18 22:37:39 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.banking.easbank.controller.AuthControllerTest]: AuthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-18 22:37:39 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.banking.easbank.EasbankApplication for test class com.banking.easbank.controller.AuthControllerTest
+2026-04-18 22:37:39 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2026-04-18 22:37:39 [main] INFO  c.b.e.controller.AuthControllerTest - Starting AuthControllerTest using Java 25.0.2 with PID 87472 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:37:39 [main] DEBUG c.b.e.controller.AuthControllerTest - Running with Spring Boot v3.2.2, Spring v6.1.3
+2026-04-18 22:37:39 [main] INFO  c.b.e.controller.AuthControllerTest - No active profile set, falling back to 1 default profile: "default"
+2026-04-18 22:37:39 [main] DEBUG o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@225fe13f
+2026-04-18 22:37:40 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 3 mappings in 'requestMappingHandlerMapping'
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-04-18 22:37:40 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 7b0db5a2-a9fc-44d0-829e-77db6401b2d9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-18 22:37:40 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@35b331de, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f566662, org.springframework.security.web.context.SecurityContextHolderFilter@4e1210de, org.springframework.security.web.header.HeaderWriterFilter@1ed7e040, org.springframework.web.filter.CorsFilter@b025f2f, org.springframework.security.web.csrf.CsrfFilter@4d6f0460, org.springframework.security.web.authentication.logout.LogoutFilter@17b59bc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@70d49a95, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7e7047a2, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6c00601e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2bb98b8a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7beb4178, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5f0469e2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@40118181, org.springframework.security.web.access.ExceptionTranslationFilter@5def348b, org.springframework.security.web.access.intercept.AuthorizationFilter@17d6e44]
+2026-04-18 22:37:40 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2026-04-18 22:37:40 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2026-04-18 22:37:40 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 0 ms
+2026-04-18 22:37:40 [main] INFO  c.b.e.controller.AuthControllerTest - Started AuthControllerTest in 0.154 seconds (process running for 4.174)
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@3023a901]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@53033e05]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@24c6f389]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{firstName=John, logintime=2026-04-18T22:37:40.144025, message=Login successful, userId=1, email=tes (truncated)...]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@2159137c]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.banking.easbank.controller.AuthController#login(LoginRequest)
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json" to [com.banking.easbank.dto.LoginRequest@7073b501]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{error=Invalid credentials, message=Email or password is incorrect}]
+2026-04-18 22:37:40 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.banking.easbank.EasbankApplicationTests]: EasbankApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-04-18 22:37:40 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.banking.easbank.EasbankApplication for test class com.banking.easbank.EasbankApplicationTests
+2026-04-18 22:37:40 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+2026-04-18 22:37:40 [main] INFO  c.b.easbank.EasbankApplicationTests - Starting EasbankApplicationTests using Java 25.0.2 with PID 87472 (started by prabhatkumar in /Users/prabhatkumar/Documents/easbank)
+2026-04-18 22:37:40 [main] DEBUG c.b.easbank.EasbankApplicationTests - Running with Spring Boot v3.2.2, Spring v6.1.3
+2026-04-18 22:37:40 [main] INFO  c.b.easbank.EasbankApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2026-04-18 22:37:40 [main] DEBUG o.s.w.c.s.GenericWebApplicationContext - Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7dbb7ca8
+2026-04-18 22:37:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-18 22:37:40 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 4 JPA repository interfaces.
+2026-04-18 22:37:40 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-18 22:37:40 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-04-18 22:37:40 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-18 22:37:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-04-18 22:37:40 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn21: url=jdbc:h2:mem:testdb user=SA
+2026-04-18 22:37:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-04-18 22:37:40 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-18 22:37:40 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-18 22:37:40 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:37:40 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-18 22:37:40 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: ad9afe18-d007-402e-9fec-91e19968b2ff
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-18 22:37:40 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 24 mappings in 'requestMappingHandlerMapping'
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2026-04-18 22:37:40 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-04-18 22:37:40 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@13fda74e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@50ed196f, org.springframework.security.web.context.SecurityContextHolderFilter@3ecf69eb, org.springframework.security.web.header.HeaderWriterFilter@3c4c595e, org.springframework.web.filter.CorsFilter@48bff6ff, org.springframework.security.web.authentication.logout.LogoutFilter@2123bc64, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@50001200, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4f94547a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@45330a89, org.springframework.security.web.access.ExceptionTranslationFilter@6c8d6a2f, org.springframework.security.web.access.intercept.AuthorizationFilter@34eef7a1]
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-04-18 22:37:40 [main] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-04-18 22:37:40 [main] INFO  c.b.easbank.EasbankApplicationTests - Started EasbankApplicationTests in 0.43 seconds (process running for 4.632)
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@2940eec0, started on Sat Apr 18 22:37:38 IST 2026
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@7346bede, started on Sat Apr 18 22:37:39 IST 2026
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@225fe13f, started on Sat Apr 18 22:37:39 IST 2026
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] DEBUG o.s.w.c.s.GenericWebApplicationContext - Closing org.springframework.web.context.support.GenericWebApplicationContext@7dbb7ca8, started on Sat Apr 18 22:37:40 IST 2026
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-04-18 22:37:40 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
