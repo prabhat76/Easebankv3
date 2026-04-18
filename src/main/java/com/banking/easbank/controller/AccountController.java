@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.Valid;
 import com.banking.easbank.entity.Account;
 import com.banking.easbank.entity.User;
 import com.banking.easbank.service.AccountService;
@@ -21,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/accounts")
