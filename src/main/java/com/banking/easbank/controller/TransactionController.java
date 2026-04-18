@@ -151,15 +151,10 @@ public class TransactionController {
             }
 
             PageRequest pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
-                // Use findByAccountId instead, as findByFromAccountIdOrToAccountId does not exist
-                List<Transactions> transactionsList = transactionsRepository.findByAccountId(accountId);
-                // Manually paginate
-                int start = Math.min(page * size, transactionsList.size());
-                int end = Math.min(start + size, transactionsList.size());
-                List<Transactions> pagedList = transactionsList.subList(start, end);
-                    // ...existing code...
-                    // Only use the pagedList/transactionsList logic, remove old transactionsPage code
-                    return ResponseEntity.ok(response);
+            Page<Transactions> transactionsPage = transactionsRepository.findByFromAccountIdOrToAccountId(accountId, accountId, pageable);
+            List<Transactions> pagedList = transactionsPage.getContent();
+            // ...existing code to map pagedList to response...
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
@@ -236,9 +231,8 @@ public class TransactionController {
 
             Optional<Account> accountOpt = accountRepository.findById(accountId);
             if (!accountOpt.isPresent()) {
-                Map<String, Object> errorResponse = new HashMap<>();
-                errorResponse.put("error", "Account not found");
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+                response.put("error", "Account not found");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
 
             Account account = accountOpt.get();
@@ -269,9 +263,8 @@ public class TransactionController {
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            Map<String, Object> errorResponse = new HashMap<>();
-            errorResponse.put("error", "Failed to process deposit: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+            response.put("error", "Failed to process deposit: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
