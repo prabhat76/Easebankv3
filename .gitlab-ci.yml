@@ -15,7 +15,7 @@ build:
   stage: build
   image: maven:3.9.6-eclipse-temurin-21
   script:
-    - mvn $MAVEN_CLI_OPTS clean compile
+    - mvn $MAVEN_CLI_OPTS clean compile -Dnet.bytebuddy.experimental=true
   artifacts:
     paths:
       - target/*.jar
@@ -24,6 +24,6 @@ unit_test:
   stage: test
   image: maven:3.9.6-eclipse-temurin-21
   script:
-    - mvn $MAVEN_CLI_OPTS test
+    - mvn $MAVEN_CLI_OPTS test -Dnet.bytebuddy.experimental=true
   dependencies:
     - build
